@@ -25,5 +25,7 @@ def load_config(config_path: Path) -> Config:
 
     with open(config_path) as f:
         config_dict = yaml.safe_load(f)
+        if config_dict is None:
+            raise ValueError(f"Config file is empty: {config_path}")
 
     return Config(**config_dict)
