@@ -15,7 +15,7 @@ dependencies = [
     "scikit-learn==1.7.1",
     "seaborn==0.13.2",
     "torch==2.7.1",
-    "torchvision==0.22.1",
+    "torchvision==0.24.1",
     "transformers==4.55.4",
     "typer==0.16.1",
     "wandb==0.22.3",
