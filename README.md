@@ -53,7 +53,7 @@ tinyvit predict --config config.yaml
 
 ## Configuration
 
-The configuration is defined in YAML format and validated using Pydantic v2. See `config.example.yaml` for a complete example.
+The configuration is defined in YAML format and validated using Pydantic v2.
 
 ### Basic Structure
 
