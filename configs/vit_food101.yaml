@@ -1,5 +1,11 @@
 data:
   dataset_name: "food101"
+  dataset_config_name: null
+  train_split: "train"
+  val_split: "validation"
+  test_split: null
+  cache_dir: "./.cache/huggingface"
+  streaming: true
   batch_size: 64
   num_workers: 4
 

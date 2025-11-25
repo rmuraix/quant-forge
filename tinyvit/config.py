@@ -14,6 +14,25 @@ class DataConfig(BaseModel):
     num_workers: int = Field(
         default=4, ge=0, description="Number of data loader workers"
     )
+    image_size: int = Field(default=224, gt=0, description="Input image size")
+    shuffle: bool = Field(
+        default=True, description="Shuffle training data (ignored for streaming)"
+    )
+    dataset_config_name: str | None = Field(
+        default=None, description="Optional config name for Hugging Face datasets"
+    )
+    train_split: str = Field(default="train", description="Train split name")
+    val_split: str | None = Field(
+        default="validation", description="Validation split name"
+    )
+    test_split: str | None = Field(default="test", description="Test split name")
+    cache_dir: Path | None = Field(
+        default=None, description="Cache directory for Hugging Face datasets"
+    )
+    streaming: bool = Field(
+        default=False,
+        description="Enable streaming mode to reduce memory/IO for large datasets",
+    )
 
 
 class ModelConfig(BaseModel):
