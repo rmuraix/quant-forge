@@ -14,14 +14,46 @@ class DataConfig(BaseModel):
     num_workers: int = Field(
         default=4, ge=0, description="Number of data loader workers"
     )
+    image_size: int = Field(default=224, gt=0, description="Input image size")
+    shuffle: bool = Field(
+        default=True, description="Shuffle training data (ignored for streaming)"
+    )
+    dataset_config_name: str | None = Field(
+        default=None, description="Optional config name for Hugging Face datasets"
+    )
+    train_split: str = Field(default="train", description="Train split name")
+    val_split: str | None = Field(
+        default="validation", description="Validation split name"
+    )
+    test_split: str | None = Field(default="test", description="Test split name")
+    cache_dir: Path | None = Field(
+        default=None, description="Cache directory for Hugging Face datasets"
+    )
+    streaming: bool = Field(
+        default=False,
+        description="Enable streaming mode to reduce memory/IO for large datasets",
+    )
 
 
 class ModelConfig(BaseModel):
     """Model configuration."""
 
-    model_name: str = Field(description="Name of the model architecture")
-    pretrained: bool = Field(default=False, description="Use pretrained weights")
+    model_name: str = Field(description="Name of the timm model architecture")
+    pretrained: bool = Field(default=True, description="Use pretrained weights")
     num_classes: int = Field(default=10, gt=0, description="Number of output classes")
+    drop_rate: float = Field(
+        default=0.0, ge=0, le=1, description="Dropout rate for classifier"
+    )
+    drop_path_rate: float = Field(
+        default=0.0, ge=0, le=1, description="Stochastic depth drop path rate"
+    )
+    checkpoint_path: Path | None = Field(
+        default=None, description="Optional checkpoint path to load"
+    )
+    freeze_backbone: bool = Field(
+        default=False,
+        description="Freeze backbone parameters, keeping classifier trainable",
+    )
 
 
 class TrainingConfig(BaseModel):
