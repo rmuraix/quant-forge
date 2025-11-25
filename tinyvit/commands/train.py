@@ -5,6 +5,7 @@ from pathlib import Path
 import typer
 
 from tinyvit.config_loader import load_config
+from tinyvit.models import build_timm_model
 
 
 def train_command(
@@ -26,9 +27,17 @@ def train_command(
     # Load and validate configuration
     config = load_config(config_path)
 
+    # Build model via timm
+    model = build_timm_model(config.model)
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+
     typer.echo(f"Dataset: {config.data.dataset_name}")
     typer.echo(f"Batch size: {config.data.batch_size}")
-    typer.echo(f"Model: {config.model.model_name}")
+    typer.echo(
+        f"Model: {config.model.model_name} "
+        f"(trainable params: {trainable_params:,}/{total_params:,})"
+    )
     typer.echo(f"Epochs: {config.training.epochs}")
     typer.echo(f"Learning rate: {config.training.learning_rate}")
     typer.echo(f"Optimizer: {config.training.optimizer}")

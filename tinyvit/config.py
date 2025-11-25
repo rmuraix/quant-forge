@@ -19,9 +19,22 @@ class DataConfig(BaseModel):
 class ModelConfig(BaseModel):
     """Model configuration."""
 
-    model_name: str = Field(description="Name of the model architecture")
-    pretrained: bool = Field(default=False, description="Use pretrained weights")
+    model_name: str = Field(description="Name of the timm model architecture")
+    pretrained: bool = Field(default=True, description="Use pretrained weights")
     num_classes: int = Field(default=10, gt=0, description="Number of output classes")
+    drop_rate: float = Field(
+        default=0.0, ge=0, le=1, description="Dropout rate for classifier"
+    )
+    drop_path_rate: float = Field(
+        default=0.0, ge=0, le=1, description="Stochastic depth drop path rate"
+    )
+    checkpoint_path: Path | None = Field(
+        default=None, description="Optional checkpoint path to load"
+    )
+    freeze_backbone: bool = Field(
+        default=False,
+        description="Freeze backbone parameters, keeping classifier trainable",
+    )
 
 
 class TrainingConfig(BaseModel):
