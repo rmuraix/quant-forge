@@ -6,7 +6,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from tinyvit.config import Config, DataConfig
-from tinyvit.data.hf_dataset import DatasetSplits, load_hf_dataset_splits
+from tinyvit.data.hf_dataset import load_hf_dataset_splits
 from tinyvit.data.transforms import build_transforms
 
 
