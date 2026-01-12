@@ -512,14 +512,23 @@ wheels = [
 
 [[package]]
 name = "fastcore"
-version = "1.9.8"
+version = "1.11.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "packaging" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c2/c9/483ea2f475fc0a5250dca577c91069460466d7f27c75803257e5400e9be5/fastcore-1.9.8.tar.gz", hash = "sha256:2f4bb8e0eabbde33b9d6270dddc6a478c159ff6afb9b2dda0ca2446b6e4be202", size = 87191, upload-time = "2025-12-26T22:15:40.301Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/25/94/c2f13884c15744a958aadf429e2f40e37b75c5a974b61f6e9983b709020d/fastcore-1.11.3.tar.gz", hash = "sha256:5eac82affc11d529f5ed1c3ab1eea6c957301f876a9077f8425a9ead895ecc36", size = 86479, upload-time = "2026-01-09T23:45:18.035Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/35/81/6a31e04a99121495a51fccbf80d38c5d7bfbaad373715cd17a2dae848745/fastcore-1.9.8-py3-none-any.whl", hash = "sha256:a50bc7f0f5e729ac683da3868344cfd7e09b763c4b296c1d65561a16d51b8533", size = 90201, upload-time = "2025-12-26T22:15:38.77Z" },
+    { url = "https://files.pythonhosted.org/packages/84/f8/78832c84a957a01a332612ea6ee5a34f63690737000bf4f90995dcca367d/fastcore-1.11.3-py3-none-any.whl", hash = "sha256:998825f8f69c44ab16a156bb60e9a6d0988f3e8aa5b2459ec95289b520cf1c0b", size = 89119, upload-time = "2026-01-09T23:45:16.174Z" },
+]
+
+[[package]]
+name = "fastgit"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ab/74/bff49a746e6fc3bd3ff8755c58046bf222adb0b25f5d7fa904fefe4c1b46/fastgit-0.0.1.tar.gz", hash = "sha256:a9789a64d22a90ce508edb9cc05158d3af0224227f606ec9ab369f08a0dd3f0d", size = 8812, upload-time = "2026-01-04T03:07:39.513Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7f/68/0adb064156bf0b1c459e714f2da79cc21b75e666c307125e6cfe7616e1a6/fastgit-0.0.1-py3-none-any.whl", hash = "sha256:555328bcf7d8887621ea7542926a115cd1722265252084be592fb4a664c21c96", size = 7786, upload-time = "2026-01-04T03:07:38.413Z" },
 ]
 
 [[package]]
@@ -1397,7 +1406,7 @@ wheels = [
 
 [[package]]
 name = "nbdev"
-version = "2.4.7"
+version = "2.4.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "asttokens" },
@@ -1405,15 +1414,16 @@ dependencies = [
     { name = "build" },
     { name = "execnb" },
     { name = "fastcore" },
+    { name = "fastgit" },
     { name = "ghapi" },
     { name = "packaging" },
     { name = "pyyaml" },
     { name = "setuptools" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b7/17/a8b39c3f3a05f1c9cb2529777273089275462aae2e344dcfc4103694ab94/nbdev-2.4.7.tar.gz", hash = "sha256:4a89ea49a5bfc6633dd42cb468b024554ad7b8d9e48e0f99a61645dc8e591af4", size = 65305, upload-time = "2025-12-19T22:50:31.712Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/58/06/f684495d2375f8242b8911877b1e2646d9d8835d3f76384cf80b79b6b509/nbdev-2.4.10.tar.gz", hash = "sha256:986da4b491fb1dbf2948678fb4a4aaa23b005834c83672b690c351756b00e339", size = 65944, upload-time = "2026-01-05T05:21:42.602Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4d/05/68245a78ad76ae6ba4b08e9acaa1890c10ca5c50c0326a877f1e532115c0/nbdev-2.4.7-py3-none-any.whl", hash = "sha256:0777cb81530d94c358c007e1e6aa058c752ecfbe5845ffc41ddf91ead50d8067", size = 68247, upload-time = "2025-12-19T22:50:29.745Z" },
+    { url = "https://files.pythonhosted.org/packages/c5/84/4b5d839a05023e304cd6d3db44353bb3bb3ae57435de840d44b7d2b5afc5/nbdev-2.4.10-py3-none-any.whl", hash = "sha256:ee56d30481d3fed07ef2a0d75ca141508fffb287dd9aad1bfe897485282ad67f", size = 69173, upload-time = "2026-01-05T05:21:41.183Z" },
 ]
 
 [[package]]
@@ -2750,7 +2760,7 @@ dev = [
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "ipywidgets", specifier = ">=8.1.5" },
     { name = "mypy", specifier = "==1.19.1" },
-    { name = "nbdev", specifier = "==2.4.7" },
+    { name = "nbdev", specifier = "==2.4.10" },
     { name = "pre-commit", specifier = ">=4.1.0" },
     { name = "ruff", specifier = "==0.14.10" },
 ]
