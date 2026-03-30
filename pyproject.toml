@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 classifiers = ["Private :: Do Not Upload"]
 dependencies = [
-    "timm==1.0.25",
+    "timm==1.0.26",
     "datasets==4.5.0",
     "matplotlib==3.10.8",
     "numpy==2.4.3",
