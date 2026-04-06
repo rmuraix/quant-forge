@@ -36,7 +36,7 @@ dev = [
     "mypy==1.19.1",
     "nbdev==3.0.12",
     "pre-commit>=4.1.0",
-    "ruff==0.15.8",
+    "ruff==0.15.9",
 ]
 
 [tool.uv.sources]
