@@ -1485,7 +1485,7 @@ wheels = [
 
 [[package]]
 name = "nbdev"
-version = "3.0.14"
+version = "3.0.15"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "asttokens" },
@@ -1499,9 +1499,9 @@ dependencies = [
     { name = "setuptools" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/61/8c/4acb3a320bf25be066a6e3c7c759b6da51287c8b833277a81d05c3c5563c/nbdev-3.0.14.tar.gz", hash = "sha256:1927e93d3c2ef40d4c3ccbf7bb17905fb645de81df92afd4f3ff25872305a8b4", size = 70917, upload-time = "2026-04-10T05:18:51.648Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/52/7bfb87e865cd0ff953e39d1c45bde2b2d95669ecdd298199412a6f7f9539/nbdev-3.0.15.tar.gz", hash = "sha256:092a4426bf0861415ae7854674fcb4a7c7ab361e6a2ab1814ec7cd62f137b88a", size = 70970, upload-time = "2026-04-16T18:55:55.614Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d2/a6/7290943fcab7330d9b7b473d14f52e841a13c013d99856a735aaccc7ffb8/nbdev-3.0.14-py3-none-any.whl", hash = "sha256:0a030e95ae364b7a94a57718506d0f28233616bf060c2a85084564d89b9fe911", size = 75027, upload-time = "2026-04-10T05:18:49.979Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/44/791d824e59c47ba3a9f3681351ebf339f979c133aa60243f36500bd33e7d/nbdev-3.0.15-py3-none-any.whl", hash = "sha256:fc936946b3b947e929e1a24b9024eec6fa845378c82199c96b09a3205285bfd2", size = 75092, upload-time = "2026-04-16T18:55:53.755Z" },
 ]
 
 [[package]]
@@ -2841,7 +2841,7 @@ dev = [
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "ipywidgets", specifier = ">=8.1.5" },
     { name = "mypy", specifier = "==1.20.1" },
-    { name = "nbdev", specifier = "==3.0.14" },
+    { name = "nbdev", specifier = "==3.0.15" },
     { name = "pre-commit", specifier = ">=4.1.0" },
     { name = "ruff", specifier = "==0.15.10" },
 ]
