@@ -1,29 +1,30 @@
 [project]
-name = "tinyvit"
+name = "quantforge"
 version = "0.1.0"
-description = "Add your description here"
+description = "QuantForge: fine-tune and quantize image classification models"
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = ["Private :: Do Not Upload"]
 dependencies = [
-    "timm==1.0.26",
-    "datasets==4.5.0",
-    "matplotlib==3.10.9",
-    "numpy==2.4.4",
-    "pandas==2.3.3",
-    "pydantic==2.12.5",
-    "pyyaml==6.0.3",
-    "scikit-learn==1.8.0",
-    "seaborn==0.13.2",
-    "torch==2.7.1",
-    "torchvision==0.22.1",
-    "transformers==5.0.0",
-    "typer==0.23.2",
-    "wandb==0.24.2",
+    "timm>=1.0.0",
+    "datasets>=2.0.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "typer>=0.9.0",
+    "wandb>=0.15.0",
+    "rich>=13.0.0",
+    "pillow>=9.0.0",
+]
+
+[project.optional-dependencies]
+quantize = [
+    "torchao>=0.1.0",
 ]
 
 [project.scripts]
-tinyvit = "tinyvit.main:app"
+quantforge = "quantforge.cli.app:app"
 
 [build-system]
 requires = ["hatchling"]
@@ -31,23 +32,9 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "ipykernel>=6.29.5",
-    "ipywidgets>=8.1.5",
-    "mypy==1.20.2",
-    "nbdev==3.0.15",
-    "pre-commit>=4.1.0",
-    "ruff==0.15.11",
+    "mypy>=1.0.0",
+    "nbdev>=2.0.0",
+    "pre-commit>=4.0.0",
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
 ]
-
-[tool.uv.sources]
-torch = [
-  { index = "pytorch-cuda", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-]
-torchvision = [
-  { index = "pytorch-cuda", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-]
-
-[[tool.uv.index]]
-name = "pytorch-cuda"
-url = "https://download.pytorch.org/whl/cu128"
-explicit = true
