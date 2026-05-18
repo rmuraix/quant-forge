@@ -7,7 +7,7 @@ requires-python = ">=3.11"
 classifiers = ["Private :: Do Not Upload"]
 dependencies = [
     "timm==1.0.26",
-    "datasets==4.5.0",
+    "datasets==4.8.5",
     "matplotlib==3.10.9",
     "numpy==2.4.4",
     "pandas==2.3.3",
