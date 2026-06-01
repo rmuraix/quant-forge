@@ -6,6 +6,7 @@ import logging
 from typing import TYPE_CHECKING
 
 import torch
+from tqdm import tqdm
 
 from quantforge.artifacts.manifest import build_manifest
 from quantforge.data.datamodule import HFDataModule
@@ -105,9 +106,8 @@ class Trainer:
         best_val_top1 = 0.0
         val_loader = dm.val_dataloader()
 
-        logger.info("Starting training for %d epochs...", cfg.training.epochs)
-
-        for epoch in range(cfg.training.epochs):
+        epoch_bar = tqdm(range(cfg.training.epochs), desc="Epochs")
+        for epoch in epoch_bar:
             train_metrics = train_one_epoch(
                 model,
                 train_loader,
@@ -134,13 +134,10 @@ class Trainer:
             self.writer.save_train_metrics(metrics_row)
             self.tracker.log_metrics(metrics_row, step=step)
 
-            logger.info(
-                "Epoch %d/%d  train_loss=%.4f  val_top1=%.4f  val_top5=%.4f",
-                epoch + 1,
-                cfg.training.epochs,
-                train_metrics["loss"],
-                val_metrics["top1"],
-                val_metrics["top5"],
+            epoch_bar.set_postfix(
+                train_loss=f"{train_metrics['loss']:.4f}",
+                val_top1=f"{val_metrics['top1']:.4f}",
+                val_top5=f"{val_metrics['top5']:.4f}",
             )
 
             # Notify quantizer

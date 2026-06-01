@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 import torch
 import torch.nn as nn
+from tqdm import tqdm
 
 from quantforge.training.metrics import compute_metrics
 
@@ -40,7 +41,8 @@ def train_one_epoch(
     total_loss = 0.0
     n_batches = 0
 
-    for batch_idx, (images, labels) in enumerate(loader):
+    pbar = tqdm(loader, desc=f"Train {epoch + 1}", leave=False)
+    for batch_idx, (images, labels) in enumerate(pbar):
         images = images.to(device, non_blocking=True)
         labels = labels.to(device, non_blocking=True)
 
@@ -71,12 +73,9 @@ def train_one_epoch(
         n_batches += 1
 
         if (batch_idx + 1) % log_interval == 0:
-            logger.info(
-                "  Epoch %d [%d/%d]  loss=%.4f",
-                epoch + 1,
-                batch_idx + 1,
-                len(loader),
-                loss.item(),
+            pbar.set_postfix(
+                loss=f"{loss.item():.4f}",
+                lr=f"{optimizer.param_groups[0]['lr']:.2e}",
             )
 
     avg_loss = total_loss / max(n_batches, 1)
@@ -102,7 +101,7 @@ def eval_one_epoch(
     top5_sum = 0.0
     n_batches = 0
 
-    for images, labels in loader:
+    for images, labels in tqdm(loader, desc="Val", leave=False):
         images = images.to(device, non_blocking=True)
         labels = labels.to(device, non_blocking=True)
 

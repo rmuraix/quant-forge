@@ -1884,6 +1884,7 @@ dependencies = [
     { name = "timm" },
     { name = "torch" },
     { name = "torchvision" },
+    { name = "tqdm" },
     { name = "typer" },
     { name = "wandb" },
 ]
@@ -1913,6 +1914,7 @@ requires-dist = [
     { name = "torch", specifier = ">=2.0.0" },
     { name = "torchao", marker = "extra == 'quantize'", specifier = ">=0.1.0" },
     { name = "torchvision", specifier = ">=0.15.0" },
+    { name = "tqdm", specifier = ">=4.67.1" },
     { name = "typer", specifier = ">=0.9.0" },
     { name = "wandb", specifier = ">=0.15.0" },
 ]
