@@ -53,25 +53,24 @@ class TorchAOQATStrategy(QuantizationStrategy):
                 raise ImportError("torchao not installed")
 
             try:
-                from torchao.quantization import int8_weight_only, quantize_
+                from torchao.quantization import Int8WeightOnlyConfig, quantize_
 
-                logger.info("Converting QAT model with torchao int8_weight_only...")
-                quantize_(model, int8_weight_only())
+                logger.info("Converting QAT model with torchao Int8WeightOnlyConfig...")
+                quantize_(model, Int8WeightOnlyConfig())
                 return model
             except (ImportError, Exception) as e:
                 logger.warning(
-                    "torchao int8_weight_only conversion failed: %s. Trying fallback.",
+                    "torchao Int8WeightOnlyConfig conversion failed: %s. Trying legacy fallback.",
                     e,
                 )
 
             try:
-                from torchao.quantization.quant_api import (  # type: ignore[import]
-                    Int8WeightOnlyQuantizedLinearWeight,
-                    quantize_,
-                )
+                from torchao.quantization import int8_weight_only, quantize_  # type: ignore[attr-defined]
 
-                logger.info("Converting QAT model with torchao PTQ fallback...")
-                quantize_(model, Int8WeightOnlyQuantizedLinearWeight)
+                logger.info(
+                    "Converting QAT model with torchao int8_weight_only (legacy)..."
+                )
+                quantize_(model, int8_weight_only())
                 return model
             except (ImportError, Exception) as e:
                 logger.warning(
