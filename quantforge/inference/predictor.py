@@ -51,7 +51,11 @@ class Predictor:
         if num_classes is None and self.cfg:
             num_classes = self.cfg.model.num_classes
         if num_classes is None:
-            id_to_label = self._label_mapping.get("id_to_label", {}) if self._label_mapping else {}
+            id_to_label = (
+                self._label_mapping.get("id_to_label", {})
+                if self._label_mapping
+                else {}
+            )
             num_classes = len(id_to_label) or 1
 
         # Build model config from checkpoint metadata
@@ -104,7 +108,11 @@ class Predictor:
         label = str(pred_id_int)
         if self._label_mapping:
             id_to_label = self._label_mapping.get("id_to_label", {})
-            label = id_to_label.get(pred_id_int) or id_to_label.get(str(pred_id_int)) or label
+            label = (
+                id_to_label.get(pred_id_int)
+                or id_to_label.get(str(pred_id_int))
+                or label
+            )
 
         return {
             "image": str(image_path),
@@ -123,7 +131,8 @@ class Predictor:
             List of prediction dicts.
         """
         images = [
-            p for p in dir_path.iterdir()
+            p
+            for p in dir_path.iterdir()
             if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
         ]
         if not images:

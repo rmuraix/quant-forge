@@ -16,11 +16,16 @@ def train_command(
     set_: Annotated[
         list[str], typer.Option("--set", help="Override config values (key.path=value)")
     ] = [],
-    dry_run: Annotated[bool, typer.Option("--dry-run", help="Validate config without training")] = False,
+    dry_run: Annotated[
+        bool, typer.Option("--dry-run", help="Validate config without training")
+    ] = False,
     wandb_mode: Annotated[
-        str | None, typer.Option("--wandb-mode", help="wandb mode: online | offline | disabled")
+        str | None,
+        typer.Option("--wandb-mode", help="wandb mode: online | offline | disabled"),
     ] = None,
-    debug: Annotated[bool, typer.Option("--debug", help="Show full traceback on error")] = False,
+    debug: Annotated[
+        bool, typer.Option("--debug", help="Show full traceback on error")
+    ] = False,
 ) -> None:
     """Run standard fine-tuning."""
     try:

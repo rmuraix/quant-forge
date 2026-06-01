@@ -13,14 +13,17 @@ from quantforge.utils.rich import print_error, print_info
 
 def quantize_command(
     config: Annotated[Path, typer.Option("--config", "-c", help="Path to config YAML")],
-    checkpoint: Annotated[Path, typer.Option("--checkpoint", help="Path to fine-tuned checkpoint")],
-    output: Annotated[Path, typer.Option("--output", help="Output path for quantized model")],
+    checkpoint: Annotated[
+        Path, typer.Option("--checkpoint", help="Path to fine-tuned checkpoint")
+    ],
+    output: Annotated[
+        Path, typer.Option("--output", help="Output path for quantized model")
+    ],
     set_: Annotated[list[str], typer.Option("--set")] = [],
     debug: Annotated[bool, typer.Option("--debug")] = False,
 ) -> None:
     """Apply post-training quantization to a fine-tuned checkpoint."""
     try:
-
         from quantforge.config.loader import load_config
         from quantforge.models.checkpoint import load_checkpoint, save_checkpoint
         from quantforge.models.factory import ModelFactory

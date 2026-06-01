@@ -13,7 +13,9 @@ from quantforge.utils.rich import print_error, print_info
 
 def eval_command(
     config: Annotated[Path, typer.Option("--config", "-c", help="Path to config YAML")],
-    checkpoint: Annotated[Path, typer.Option("--checkpoint", help="Path to checkpoint")],
+    checkpoint: Annotated[
+        Path, typer.Option("--checkpoint", help="Path to checkpoint")
+    ],
     set_: Annotated[list[str], typer.Option("--set")] = [],
     debug: Annotated[bool, typer.Option("--debug")] = False,
 ) -> None:

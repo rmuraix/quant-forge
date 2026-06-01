@@ -17,7 +17,9 @@ def init_command(
     template: Annotated[
         str, typer.Option("--template", "-t", help="Template: basic | qat | ptq")
     ] = "basic",
-    debug: Annotated[bool, typer.Option("--debug", help="Show full traceback on error")] = False,
+    debug: Annotated[
+        bool, typer.Option("--debug", help="Show full traceback on error")
+    ] = False,
 ) -> None:
     """Create a YAML config file from a template."""
     try:
@@ -29,9 +31,7 @@ def init_command(
 
         output.parent.mkdir(parents=True, exist_ok=True)
         if output.exists():
-            typer.confirm(
-                f"File '{output}' already exists. Overwrite?", abort=True
-            )
+            typer.confirm(f"File '{output}' already exists. Overwrite?", abort=True)
 
         output.write_text(TEMPLATES[template])
         print_info(f"Created config: {output}  (template: {template})")

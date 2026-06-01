@@ -46,7 +46,9 @@ class TorchAOPTQStrategy(QuantizationStrategy):
                 quantize_(model, Int8WeightOnlyQuantizedLinearWeight)
                 return model
             except (ImportError, Exception) as e:
-                logger.warning("torchao PTQ fallback failed: %s. Returning original model.", e)
+                logger.warning(
+                    "torchao PTQ fallback failed: %s. Returning original model.", e
+                )
                 return model
 
         except ImportError as e:

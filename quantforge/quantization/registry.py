@@ -14,6 +14,7 @@ QUANTIZATION_REGISTRY: dict[tuple[str, str], type[QuantizationStrategy]] = {
     ("none", "none"): NoQuantizationStrategy,
 }
 
+
 # Register torchao strategies lazily
 def _register_torchao() -> None:
     from quantforge.quantization.torchao_qat import TorchAOQATStrategy

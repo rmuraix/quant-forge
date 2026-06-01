@@ -23,7 +23,9 @@ def inspect_config(
 
         cfg = load_config(config)
         print_info(f"Config: {config}  (valid)")
-        typer.echo(yaml.dump(cfg.model_dump(), default_flow_style=False, sort_keys=False))
+        typer.echo(
+            yaml.dump(cfg.model_dump(), default_flow_style=False, sort_keys=False)
+        )
 
     except QuantForgeError as e:
         if debug:
@@ -56,7 +58,9 @@ def inspect_dataset(
         print_info(f"  Split '{train_split_name}': {len(split)} examples")
         print_info(f"  Columns: {list(split.features.keys())}")
         print_info(f"  Num classes: {num_classes}")
-        print_info(f"  Labels: {list(label_mapping['id_to_label'].values())[:10]}{'...' if num_classes > 10 else ''}")
+        print_info(
+            f"  Labels: {list(label_mapping['id_to_label'].values())[:10]}{'...' if num_classes > 10 else ''}"
+        )
 
     except QuantForgeError as e:
         if debug:
@@ -78,7 +82,9 @@ def inspect_model(
         cfg = load_config(config)
         num_classes = cfg.model.num_classes or 10  # fallback for inspection
 
-        print_info(f"Creating model '{cfg.model.name}' (pretrained={cfg.model.pretrained})...")
+        print_info(
+            f"Creating model '{cfg.model.name}' (pretrained={cfg.model.pretrained})..."
+        )
         factory = ModelFactory(cfg.model, num_classes)
         model = factory.create()
 

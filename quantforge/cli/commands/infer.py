@@ -12,8 +12,12 @@ from quantforge.utils.rich import print_error, print_info
 
 
 def infer_command(
-    checkpoint: Annotated[Path, typer.Option("--checkpoint", help="Path to checkpoint")],
-    image: Annotated[Path | None, typer.Option("--image", help="Path to a single image")] = None,
+    checkpoint: Annotated[
+        Path, typer.Option("--checkpoint", help="Path to checkpoint")
+    ],
+    image: Annotated[
+        Path | None, typer.Option("--image", help="Path to a single image")
+    ] = None,
     input_dir: Annotated[
         Path | None, typer.Option("--input-dir", help="Directory of images")
     ] = None,
@@ -32,9 +36,7 @@ def infer_command(
         from quantforge.inference.predictor import Predictor
 
         if image is None and input_dir is None:
-            raise QuantForgeError(
-                "Either --image or --input-dir must be provided."
-            )
+            raise QuantForgeError("Either --image or --input-dir must be provided.")
 
         cfg = load_config(config) if config else None
         predictor = Predictor(checkpoint, cfg)

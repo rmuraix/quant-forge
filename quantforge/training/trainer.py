@@ -109,8 +109,16 @@ class Trainer:
 
         for epoch in range(cfg.training.epochs):
             train_metrics = train_one_epoch(
-                model, train_loader, optimizer, scheduler, loss_fn, device, cfg.training, epoch,
-                scaler, log_interval=cfg.logging.log_interval,
+                model,
+                train_loader,
+                optimizer,
+                scheduler,
+                loss_fn,
+                device,
+                cfg.training,
+                epoch,
+                scaler,
+                log_interval=cfg.logging.log_interval,
             )
             val_metrics = eval_one_epoch(model, val_loader, loss_fn, device)
 
@@ -128,8 +136,11 @@ class Trainer:
 
             logger.info(
                 "Epoch %d/%d  train_loss=%.4f  val_top1=%.4f  val_top5=%.4f",
-                epoch + 1, cfg.training.epochs,
-                train_metrics["loss"], val_metrics["top1"], val_metrics["top5"],
+                epoch + 1,
+                cfg.training.epochs,
+                train_metrics["loss"],
+                val_metrics["top1"],
+                val_metrics["top5"],
             )
 
             # Notify quantizer
@@ -138,7 +149,9 @@ class Trainer:
             # Save last checkpoint
             save_checkpoint(
                 self.writer.run_dir / "checkpoints" / "last.pt",
-                model, cfg, label_mapping,
+                model,
+                cfg,
+                label_mapping,
                 metrics=metrics_row,
             )
 
@@ -147,7 +160,9 @@ class Trainer:
                 best_val_top1 = val_metrics["top1"]
                 save_checkpoint(
                     self.writer.run_dir / "checkpoints" / "best.pt",
-                    model, cfg, label_mapping,
+                    model,
+                    cfg,
+                    label_mapping,
                     metrics=metrics_row,
                 )
                 logger.info("  ✓ New best val/top1=%.4f — saved best.pt", best_val_top1)
@@ -156,11 +171,13 @@ class Trainer:
         self.quantizer.convert_model(model)
 
         # 9. Summary
-        self.tracker.log_summary({
-            "best_val_top1": best_val_top1,
-            "local_run_dir": str(self.writer.run_dir),
-            "best_checkpoint": "checkpoints/best.pt",
-        })
+        self.tracker.log_summary(
+            {
+                "best_val_top1": best_val_top1,
+                "local_run_dir": str(self.writer.run_dir),
+                "best_checkpoint": "checkpoints/best.pt",
+            }
+        )
 
         # 10. Manifest
         manifest = build_manifest(

@@ -58,7 +58,10 @@ def validate_columns(dataset_split, image_column: str, label_column: str) -> Non
         DatasetColumnError with actionable message if a column is missing.
     """
     available = list(dataset_split.features.keys())
-    for col, col_type in [(image_column, "image_column"), (label_column, "label_column")]:
+    for col, col_type in [
+        (image_column, "image_column"),
+        (label_column, "label_column"),
+    ]:
         if col not in available:
             raise DatasetColumnError(
                 f"Column '{col}' was not found in the dataset.\n"

@@ -26,7 +26,9 @@ class TorchAOQATStrategy(QuantizationStrategy):
             try:
                 from torchao.quantization import quantize_  # noqa: F401
 
-                logger.info("torchao available. QAT preparation will occur at convert step.")
+                logger.info(
+                    "torchao available. QAT preparation will occur at convert step."
+                )
                 return model
             except ImportError:
                 pass
@@ -57,7 +59,10 @@ class TorchAOQATStrategy(QuantizationStrategy):
                 quantize_(model, int8_weight_only())
                 return model
             except (ImportError, Exception) as e:
-                logger.warning("torchao int8_weight_only conversion failed: %s. Trying fallback.", e)
+                logger.warning(
+                    "torchao int8_weight_only conversion failed: %s. Trying fallback.",
+                    e,
+                )
 
             try:
                 from torchao.quantization.quant_api import (  # type: ignore[import]
@@ -69,7 +74,10 @@ class TorchAOQATStrategy(QuantizationStrategy):
                 quantize_(model, Int8WeightOnlyQuantizedLinearWeight)
                 return model
             except (ImportError, Exception) as e:
-                logger.warning("torchao fallback conversion failed: %s. Returning original model.", e)
+                logger.warning(
+                    "torchao fallback conversion failed: %s. Returning original model.",
+                    e,
+                )
                 return model
 
         except ImportError as e:

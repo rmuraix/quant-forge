@@ -80,7 +80,9 @@ class Evaluator:
             "eval/top5": val_metrics["top5"],
             "eval/model_size_mb": size_mb,
             "eval/latency_ms": latency_metrics["latency_ms"],
-            "eval/throughput_images_per_sec": latency_metrics["throughput_images_per_sec"],
+            "eval/throughput_images_per_sec": latency_metrics[
+                "throughput_images_per_sec"
+            ],
         }
         logger.info(
             "Eval results: top1=%.4f  top5=%.4f  size=%.1f MB  latency=%.1f ms",

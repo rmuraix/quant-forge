@@ -25,4 +25,6 @@ def setup_logging(level: str = "info", use_rich: bool = True) -> None:
             return
         except ImportError:
             pass
-    logging.basicConfig(level=numeric_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    logging.basicConfig(
+        level=numeric_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+    )

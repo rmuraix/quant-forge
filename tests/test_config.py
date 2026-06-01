@@ -19,7 +19,10 @@ def tmp_config(tmp_path: Path) -> Path:
         "version": 1,
         "project": {"name": "test-exp", "output_dir": "outputs", "seed": 0},
         "model": {"name": "resnet18"},
-        "dataset": {"name": "cifar10", "split": {"train": "train", "validation": "test"}},
+        "dataset": {
+            "name": "cifar10",
+            "split": {"train": "train", "validation": "test"},
+        },
         "tracking": {"backend": "wandb", "mode": "disabled"},
     }
     p = tmp_path / "config.yaml"
@@ -96,7 +99,9 @@ def test_default_values(tmp_config: Path) -> None:
 
 
 def test_override_bool_types(tmp_config: Path) -> None:
-    cfg = load_config(tmp_config, overrides=["training.amp=false", "training.deterministic=true"])
+    cfg = load_config(
+        tmp_config, overrides=["training.amp=false", "training.deterministic=true"]
+    )
     assert cfg.training.amp is False
     assert cfg.training.deterministic is True
 
