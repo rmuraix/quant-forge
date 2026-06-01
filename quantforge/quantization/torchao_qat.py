@@ -56,7 +56,7 @@ class TorchAOQATStrategy(QuantizationStrategy):
                 from torchao.quantization import Int8WeightOnlyConfig, quantize_
 
                 logger.info("Converting QAT model with torchao Int8WeightOnlyConfig...")
-                quantize_(model, Int8WeightOnlyConfig())
+                quantize_(model, Int8WeightOnlyConfig(version=2))
                 return model
             except (ImportError, Exception) as e:
                 logger.warning(
