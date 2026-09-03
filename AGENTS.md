@@ -83,13 +83,25 @@ Checkpoints are self-contained dicts saved with `torch.save`. Every checkpoint i
 {
     "format_version": 1,
     "model_state_dict": ...,
-    "model":      {"name": ..., "num_classes": ..., "in_chans": ...},
+    "model": {"name": ..., "num_classes": ..., "in_chans": ...},
     "preprocess": {"image_size": ..., "mean": ..., "std": ..., "interpolation": ...},
     "label_mapping": {"id_to_label": {...}, "label_to_id": {...}},
-    "quantization": {"enabled": ..., "backend": ..., "mode": ..., "dtype": ..., "recipe": ...},
-    "config": {...},   # full ExperimentConfig.model_dump()
+    "quantization": {
+        "enabled": ...,
+        "backend": ...,
+        "mode": ...,
+        "dtype": ...,
+        "recipe": ...,
+    },
+    "config": {...},  # full ExperimentConfig.model_dump()
     "metrics": {...},
-    "environment": {"python": ..., "torch": ..., "torchao": ..., "timm": ..., "cuda": ...},
+    "environment": {
+        "python": ...,
+        "torch": ...,
+        "torchao": ...,
+        "timm": ...,
+        "cuda": ...,
+    },
 }
 ```
 
